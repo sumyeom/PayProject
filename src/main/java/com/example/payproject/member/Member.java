@@ -50,6 +50,7 @@ public class Member {
 
     @Column(name = "flag", length = 5)
     private String flag;
+
     public Member(){}
     public Member(UUID id,
                   String email,
@@ -75,6 +76,16 @@ public class Member {
                   String saltKey,
                   String flag) {
         this.id = UUID.fromString(id);
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.saltKey = saltKey;
+        this.flag = flag;
+    }
+
+    public void updateInfo(String email, String name, String password,
+                           String phone, String saltKey, String flag) {
         this.email = email;
         this.name = name;
         this.password = password;
