@@ -11,6 +11,7 @@ public record MemberRequest(
         String flag
 ) {
     public MemberCommand toCommand(){
+
         return new MemberCommand(email, name, password, phone, saltKey, flag);
     }
 }
