@@ -1,4 +1,4 @@
-package com.example.payproject.member;
+package com.example.payproject.member.domain;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -52,7 +52,7 @@ public class Member {
     private String flag;
 
     public Member(){}
-    public Member(UUID id,
+    private Member(UUID id,
                   String email,
                   String name,
                   String password,
@@ -68,7 +68,7 @@ public class Member {
         this.flag = flag;
     }
 
-    public Member(String id,
+    private Member(String id,
                   String email,
                   String name,
                   String password,
@@ -82,6 +82,15 @@ public class Member {
         this.phone = phone;
         this.saltKey = saltKey;
         this.flag = flag;
+    }
+
+    public static Member create(String email,
+                                String name,
+                                String password,
+                                String phone,
+                                String saltKey,
+                                String flag){
+        return new Member(UUID.randomUUID(), email, name, password, phone, saltKey, flag );
     }
 
     public void updateInfo(String email, String name, String password,
