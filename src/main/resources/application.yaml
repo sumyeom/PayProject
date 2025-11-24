@@ -20,9 +20,21 @@ spring:
         format_sql: ${SPRING_JPA_HIBERNATE_FORMAT_SQL}
         jdbc:
           time_zone: ${SPRING_JPA_HIBERNATE_JDBC_TIME_ZONE}
+  batch:
+    jdbc:
+      initialize-schema: never
+  task:
+    scheduling:
+      cron:
+        settlement: ${SETTLEMENT_CRON:-}
 
 api:
   v1: /api/v1
+settlement:
+  async:
+    enabled: ${SETTLEMENT_ASYNC}
+    pool-size: ${SETTLEMENT_ASYNC_POOL_SIZE}
+
 
 payment:
   toss:
